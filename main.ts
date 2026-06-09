@@ -135,18 +135,27 @@ class RecentNotesView extends ItemView {
 		});
 
 		const grouped = groupByDay(recent);
+		const activeFile = this.app.workspace.getActiveFile();
 
 		for (const [dayLabel, entries] of grouped) {
 			const daySection = container.createEl("div", { cls: "recent-notes-day-section" });
 			const header = daySection.createEl("div", { cls: "recent-notes-day-header" });
 			header.createEl("div", { cls: "recent-notes-day-label", text: dayLabel });
-			header.createEl("div", { cls: "recent-notes-day-count", text: String(entries.length) });
+			header.createEl("div", {
+				cls: "recent-notes-day-count",
+				text: `${entries.length} ${entries.length === 1 ? "item" : "items"} edited`,
+			});
 
 			const list = daySection.createEl("div", { cls: "recent-notes-list" });
 
 			const limited = entries.slice(0, settings.maxFilesPerDay);
 			for (const entry of limited) {
 				const item = list.createEl("div", { cls: "recent-notes-item" });
+
+				if (activeFile && entry.file.path === activeFile.path) {
+					item.addClass("recent-notes-item--active");
+				}
+
 				const content = item.createEl("div", { cls: "recent-notes-content" });
 				const link = content.createEl("a", { cls: "recent-notes-link" });
 
@@ -226,6 +235,11 @@ export default class RecentNotesPlugin extends Plugin {
 		);
 		this.registerEvent(
 			this.app.vault.on("delete", () => this.refreshView())
+		);
+
+		// Re-render when active file changes to update highlight
+		this.registerEvent(
+			this.app.workspace.on("active-leaf-change", () => this.refreshView())
 		);
 
 		this.addSettingTab(new RecentNotesSettingTab(this.app, this));

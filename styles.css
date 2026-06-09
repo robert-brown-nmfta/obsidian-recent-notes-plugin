@@ -26,10 +26,14 @@
 .recent-notes-day-section {
   margin-top: 16px;
 }
+.recent-notes-day-section + .recent-notes-day-section {
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: 8px;
+}
 .recent-notes-day-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   padding: 4px 16px;
 }
 .recent-notes-day-label {
@@ -41,10 +45,12 @@
 }
 .recent-notes-day-count {
   font-size: 10px;
-  color: var(--text-faint);
-  background: var(--background-secondary);
-  border-radius: 8px;
-  padding: 1px 6px;
+  font-weight: 500;
+  color: var(--interactive-accent);
+  background: rgba(var(--interactive-accent-rgb), 0.15);
+  border-radius: 10px;
+  padding: 2px 8px;
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.35);
 }
 
 /* ── Note item ────────────────────────────────── */
@@ -62,6 +68,17 @@
   background: var(--background-secondary);
   border-left-color: var(--interactive-accent);
 }
+
+/* Active note highlight */
+.recent-notes-item--active {
+  background: rgba(var(--interactive-accent-rgb), 0.12);
+  border-left-color: var(--interactive-accent);
+}
+.recent-notes-item--active .recent-notes-link {
+  color: var(--interactive-accent);
+  font-weight: 500;
+}
+
 .recent-notes-content {
   flex: 1;
   min-width: 0;
