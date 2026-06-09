@@ -1,0 +1,118 @@
+/* ── Container ────────────────────────────────── */
+.recent-notes-container {
+  font-size: 13px;
+  padding-bottom: 1rem;
+}
+
+/* ── Panel header ─────────────────────────────── */
+.recent-notes-panel-head {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  margin-bottom: 4px;
+}
+.recent-notes-panel-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-normal);
+  letter-spacing: 0.01em;
+}
+.recent-notes-panel-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── Day section ──────────────────────────────── */
+.recent-notes-day-section {
+  margin-top: 16px;
+}
+.recent-notes-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+}
+.recent-notes-day-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.recent-notes-day-count {
+  font-size: 10px;
+  color: var(--text-faint);
+  background: var(--background-secondary);
+  border-radius: 8px;
+  padding: 1px 6px;
+}
+
+/* ── Note item ────────────────────────────────── */
+.recent-notes-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 16px 5px 14px;
+  border-left: 2px solid transparent;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 80ms ease;
+}
+.recent-notes-item:hover {
+  background: var(--background-secondary);
+  border-left-color: var(--interactive-accent);
+}
+.recent-notes-content {
+  flex: 1;
+  min-width: 0;
+}
+.recent-notes-link {
+  display: block;
+  font-size: 13px;
+  color: var(--text-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+.recent-notes-item:hover .recent-notes-link {
+  color: var(--interactive-accent);
+}
+.recent-notes-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1px;
+}
+.recent-notes-path {
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+.recent-notes-meta-time {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.recent-notes-time {
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Overflow + empty states ──────────────────── */
+.recent-notes-more {
+  font-size: 11px;
+  color: var(--text-faint);
+  padding: 3px 16px 6px;
+}
+.recent-notes-empty {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 24px 16px;
+  text-align: center;
+}

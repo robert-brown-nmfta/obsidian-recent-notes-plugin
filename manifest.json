@@ -1,0 +1,11 @@
+{
+  "id": "recent-notes",
+  "name": "Recent Notes",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Shows recently edited notes grouped by day in the sidebar.",
+  "author": "Robert Brown",
+  "authorUrl": "",
+  "fundingUrl": "",
+  "isDesktopOnly": false
+}
