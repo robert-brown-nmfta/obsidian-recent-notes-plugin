@@ -157,6 +157,10 @@ class RecentNotesView extends ItemView {
 					item.addClass("recent-notes-item--active");
 				}
 
+				item.addEventListener("click", () => {
+					this.app.workspace.getLeaf(false).openFile(entry.file);
+				});
+
 				const content = item.createEl("div", { cls: "recent-notes-content" });
 				const link = content.createEl("a", { cls: "recent-notes-link" });
 
@@ -166,12 +170,6 @@ class RecentNotesView extends ItemView {
 
 				link.setText(displayName);
 				link.title = entry.file.path;
-				link.setAttribute("href", "#");
-
-				link.addEventListener("click", (e) => {
-					e.preventDefault();
-					this.app.workspace.getLeaf(false).openFile(entry.file);
-				});
 
 				const meta = content.createEl("div", { cls: "recent-notes-meta" });
 				if (!settings.showFullPath) {
