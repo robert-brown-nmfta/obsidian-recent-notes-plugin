@@ -99,6 +99,7 @@
 .recent-notes-meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 6px;
   margin-top: 1px;
 }
@@ -108,11 +109,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 140px;
+  flex: 1;
+  min-width: 0;
 }
 .recent-notes-meta-time {
   font-size: 11px;
   color: var(--text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .recent-notes-time {
   font-size: 11px;
