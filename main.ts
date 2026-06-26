@@ -1,5 +1,6 @@
 import {
 	App,
+	debounce,
 	ItemView,
 	Plugin,
 	PluginSettingTab,
@@ -169,7 +170,7 @@ class RecentNotesView extends ItemView {
 
 				link.addEventListener("click", (e) => {
 					e.preventDefault();
-					this.app.workspace.openLinkText(entry.file.path, "", false);
+					this.app.workspace.getLeaf(false).openFile(entry.file);
 				});
 
 				const meta = content.createEl("div", { cls: "recent-notes-meta" });
@@ -265,14 +266,14 @@ export default class RecentNotesPlugin extends Plugin {
 		workspace.revealLeaf(leaf);
 	}
 
-	private refreshView(): void {
+	private refreshView = debounce(() => {
 		const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_RECENT_NOTES);
 		for (const leaf of leaves) {
 			if (leaf.view instanceof RecentNotesView) {
 				leaf.view.render();
 			}
 		}
-	}
+	}, 100);
 }
 
 class RecentNotesSettingTab extends PluginSettingTab {
